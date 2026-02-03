@@ -1,0 +1,4 @@
+{
+	"tailwindCSS.experimental.classRegex": [["twMerge\\(([^)]*)\\)", "'([^']*)'"]],
+	"tailwindCSS.experimental.configFile": "src/app/globals.css"
+}
