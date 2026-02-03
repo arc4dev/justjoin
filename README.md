@@ -1,16 +1,17 @@
 # 🎮 Pokemon Trainer Registration App for JustJoin.it as recruitment task
 
-I've built it with focus on code quality, performance, and user experience. I'll expand on that later in this README. (TODO)
+## Kilka słów o implementacji ode mnie (po polsku :))
 
-## Features
+Przygotowując to zadanie, skupiłem się na na tym, aby aplikacja nie tylko realizowała wymagania, ale była w pełni **production-ready**.
 
-- **Fuzzy Pokemon Search** - Autocomplete with Fuse.js (typo tolerance)
-- **Real-time Validation** - Client & server-side with Zod schemas
-- **Retro Design** - IBM VGA font, MUI 6 components, smooth animations
-- **Live Preview** - Shows Pokemon sprite, types, and stats from PokeAPI
-- **Rate Limiting** - 60 requests/min per IP for API protection (in-memory)
-- **Server Components** - Next.js 16 App Router with React 19
-- **Fully Tested** - Unit, integration, and E2E tests
+- **Struktura feature-based** - standard w dużych projektach.
+- **Fuzzy Search** z Fuse.js, **debounce** i caching razem z **React Query**(albo tanstack jak kto lubi).
+- **MUI theme** - w sumie pierwszy raz z niego korzystałem, zazwyczaj uzywam TailwindaCSS lub Radix UI, ale chciałem pokazać, że potrafię się dostosować do preferowanego przez Was stacka. (mam nadzieję, że nie popełniłem jakichś kardynalnych błędów).
+- **In-memory rate limiting** - dodałem prosty in-memory rate limiter na poziomie API Routes przy searchu Pokemona. Normalnie w produkcji użyłbym do tego Redis'a, ale na potrzeby tego zadania uznałem, że to wystarczy.
+- **Wszystko co napisałem, jest przetestowane** - zarówno jednostkowo (Vitest), jak i E2E (Playwright). Fajną rolę pełni tutaj AI, bo kiedyś było to mozolne, a teraz tak na prawdę łatwiej zrobić bezpieczną aplikacje :) AI moze nam je wygenerować, poza tym widzi więcej edge case'ów. win-win.
+- **Dodałem lekkie animacje z Framer Motion** (teraz motion.dev), żeby podnieść UX i nadać aplikacji trochę bardziej nowoczesny szlif mimo retro stylistyki.
+- W kodzie zazwyczaj cenię sobię czytelność, więc staram się numerować kroki w funkcjach, dodawać komenatrze w kluczowych miejscach, np. w opisach funkcji. W dużych projektach jest to tym bardziej ważne, ale lubię to robić nawet w mniejszych. Lepiej wtedy myślę.
+- **Aplikację można uruchomić w Dockerze**, przygotowałem konfigurację dla dev (z hot-reloadem) oraz production.
 
 ## Technologies used to build
 
