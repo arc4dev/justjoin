@@ -10,7 +10,7 @@ I've built it with focus on code quality, performance, and user experience. I'll
 - **Live Preview** - Shows Pokemon sprite, types, and stats from PokeAPI
 - **Rate Limiting** - 60 requests/min per IP for API protection (in-memory)
 - **Server Components** - Next.js 16 App Router with React 19
-- **Fully Tested** - Unit, integration, and E2E tests with 80%+ coverage
+- **Fully Tested** - Unit, integration, and E2E tests
 
 ## Technologies used to build
 
