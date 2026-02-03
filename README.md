@@ -12,6 +12,7 @@ Przygotowując to zadanie, skupiłem się na na tym, aby aplikacja nie tylko rea
 - **Dodałem lekkie animacje z Framer Motion** (teraz motion.dev), żeby podnieść UX i nadać aplikacji trochę bardziej nowoczesny szlif mimo retro stylistyki.
 - W kodzie zazwyczaj cenię sobię czytelność, więc staram się numerować kroki w funkcjach, dodawać komenatrze w kluczowych miejscach, np. w opisach funkcji. W dużych projektach jest to tym bardziej ważne, ale lubię to robić nawet w mniejszych. Lepiej wtedy myślę.
 - **Aplikację można uruchomić w Dockerze**, przygotowałem konfigurację dla dev (z hot-reloadem) oraz production.
+- A i, normalnie commituje co funkcjonalność (zgodnie z Conventional Commits), ale tutaj pozwolilem sobie na jeden commit jak za czasów juniora.
 
 ## Technologies used to build
 
