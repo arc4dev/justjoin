@@ -1,26 +1,51 @@
 {
-  "name": "justjoin",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
-  },
-  "dependencies": {
-    "next": "16.1.6",
-    "react": "19.2.3",
-    "react-dom": "19.2.3"
-  },
-  "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "16.1.6",
-    "tailwindcss": "^4",
-    "typescript": "^5"
-  }
+	"name": "justjoin",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "eslint",
+		"test": "vitest",
+		"test:ui": "vitest --ui",
+		"test:coverage": "vitest --coverage",
+		"test:e2e": "playwright test",
+		"test:e2e:ui": "playwright test --ui"
+	},
+	"dependencies": {
+		"@emotion/cache": "^11.14.0",
+		"@emotion/react": "^11.14.0",
+		"@emotion/server": "^11.11.0",
+		"@emotion/styled": "^11.14.1",
+		"@hookform/resolvers": "^5.2.2",
+		"@mui/icons-material": "^7.3.7",
+		"@mui/material": "^7.3.7",
+		"@tanstack/react-query": "^5.90.20",
+		"framer-motion": "^12.31.0",
+		"fuse.js": "^7.1.0",
+		"next": "16.1.6",
+		"react": "19.2.3",
+		"react-dom": "19.2.3",
+		"react-hook-form": "^7.71.1",
+		"use-debounce": "^10.1.0",
+		"zod": "^4.3.6"
+	},
+	"devDependencies": {
+		"@playwright/test": "^1.58.1",
+		"@tailwindcss/postcss": "^4",
+		"@testing-library/jest-dom": "^6.9.1",
+		"@testing-library/react": "^16.3.2",
+		"@types/node": "^20",
+		"@types/react": "^19",
+		"@types/react-dom": "^19",
+		"@vitejs/plugin-react": "^5.1.3",
+		"eslint": "^9",
+		"eslint-config-next": "16.1.6",
+		"jsdom": "^28.0.0",
+		"playwright": "^1.58.1",
+		"tailwindcss": "^4",
+		"typescript": "^5",
+		"vitest": "^4.0.18"
+	}
 }

@@ -1,9 +1,16 @@
-export default function Home() {
+import { Container } from '@/components/layout/Container/Container'
+import { DateDisplay } from '@/components/layout/DateDisplay/DateDisplay'
+import { TrainerForm } from '@/features/pokemon-registration'
+import { getCurrentDate } from '@/lib/services/date.service'
+
+export default async function Home() {
+	// Fetch current date on the server to avoid layout shifts (i hate these)
+	const currentDate = await getCurrentDate()
+
 	return (
-		<div className='flex min-h-screen items-center justify-center font-sans'>
-			<main className='flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16'>
-				<h1>WELCOME TO JUTSTJOIN ASSIGNMENT!</h1>
-			</main>
-		</div>
+		<Container>
+			<DateDisplay date={currentDate} />
+			<TrainerForm />
+		</Container>
 	)
 }

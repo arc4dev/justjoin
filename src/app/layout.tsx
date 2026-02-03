@@ -1,10 +1,12 @@
 import type { Metadata } from 'next'
 import { ibmVga } from '../fonts'
+import { ThemeProvider } from '../styles/ThemeProvider'
+import { QueryProvider } from '../lib/providers/QueryProvider'
 import './globals.css'
 
 export const metadata: Metadata = {
-	title: 'JustJoin Assignment 🥳',
-	description: 'A simple Next.js application about POKEMONS! 🤩'
+	title: 'Pokemon Trainer Registration',
+	description: 'Register as a Pokemon trainer and choose your companion'
 }
 
 export default function RootLayout({
@@ -14,7 +16,11 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='en'>
-			<body className={`${ibmVga.variable} antialiased`}>{children}</body>
+			<body className={`${ibmVga.variable} antialiased`}>
+				<ThemeProvider>
+					<QueryProvider>{children}</QueryProvider>
+				</ThemeProvider>
+			</body>
 		</html>
 	)
 }

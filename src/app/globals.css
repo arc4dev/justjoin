@@ -1,19 +1,40 @@
 @import 'tailwindcss';
 
 :root {
-	--background: #ffffff;
-	--foreground: #171717;
+	/* Primitive Design Tokens - Source of Truth */
 
+	/* Colors - Brand */
 	--primary: #9747ff;
 	--primary-dark: #7135bf;
 	--primary-light: #9747ff40;
+	--primary-light-alpha: rgba(151, 71, 255, 0.25);
+
+	/* Colors - Neutrals */
+	--background: #ffffff;
+	--foreground: #2a2a2a;
 	--grey-100: #2a2a2a;
 	--grey-200: #7f7f7f;
 	--grey-300: #e4e4e4;
 	--grey-400: #eeeeee;
+	--grey-border: #eeeeee;
+	--surface-subtle: #fafafa;
+
+	/* Colors - Semantic */
 	--error: #ff4e4e;
-	--disabled: #00000033;
-	--shadow-grey-color: rgba(0, 0, 0, 0.1);
+	--disabled: rgba(0, 0, 0, 0.2);
+
+	/* Badges & Special */
+	--badge-bg: #e5d9ff;
+	--badge-text: #9747ff;
+	--dropdown-hover: #f3ebff;
+	--dropdown-selected: #e5d9ff;
+	--dropdown-selected-hover: #d9c9ff;
+
+	/* Shadows */
+	--shadow-focus: 0 0 0 4px var(--primary-light-alpha);
+	--shadow-grey-dialog: 0 4px 10px 2px rgba(0, 0, 0, 0.1);
+
+	/* Shape */
 	--rounded-xs: 2px;
 }
 

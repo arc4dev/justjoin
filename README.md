@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎮 Pokemon Trainer Registration App for JustJoin.it as recruitment task
+
+I've built it with focus on code quality, performance, and user experience. I'll expand on that later in this README. (TODO)
+
+## Features
+
+- **Fuzzy Pokemon Search** - Autocomplete with Fuse.js (typo tolerance)
+- **Real-time Validation** - Client & server-side with Zod schemas
+- **Retro Design** - IBM VGA font, MUI 6 components, smooth animations
+- **Live Preview** - Shows Pokemon sprite, types, and stats from PokeAPI
+- **Rate Limiting** - 60 requests/min per IP for API protection (in-memory)
+- **Server Components** - Next.js 16 App Router with React 19
+- **Fully Tested** - Unit, integration, and E2E tests with 80%+ coverage
+
+## Technologies used to build
+
+- **Next.js 16** - Framework with App Router
+- **React 19** - UI with Server Components
+- **MUI 6** - Component library
+- **Zod** - Type-safe validation
+- **React Hook Form** - Form management
+- **TanStack Query** - Data fetching & caching
+- **Fuse.js** - Fuzzy search
+- **use-debounce** - Request debouncing
+- **Vitest** - Unit testing
+- **Playwright** - E2E testing
+
+## 🚀 Quick Start
+
+### Installation
+
+```bash
+# Install dependencies
+npm install
+
+# Install Playwright browsers (for E2E tests)
+npx playwright install
+```
 
 ## Getting Started
 
-First, run the development server:
+### Development
 
 ```bash
+# Start development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Open http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Testing
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# Run all unit tests
+npm test
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Run E2E tests
+npm run test:e2e
 
-## Learn More
+# Run all tests
+npm test && npm run test:e2e
 
-To learn more about Next.js, take a look at the following resources:
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Build
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+# Create production build
+npm run build
 
-## Deploy on Vercel
+# Start production server
+npm start
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Docker
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+#### Development (with hot reload)
+
+```bash
+# Start development environment
+docker compose up
+
+# Open http://localhost:3000
+# Changes in files will auto-reload :)
+```
+
+#### Production
+
+```bash
+# Build production image
+docker build -t pokemon-trainer-justjoin-app .
+
+# Run production container
+docker run -p 3000:3000 pokemon-trainer-justjoin-app
+
+# Open http://localhost:3000
+```

@@ -1,4 +1,8 @@
 {
 	"tailwindCSS.experimental.classRegex": [["twMerge\\(([^)]*)\\)", "'([^']*)'"]],
-	"tailwindCSS.experimental.configFile": "src/app/globals.css"
+	"tailwindCSS.experimental.configFile": "src/app/globals.css",
+	"files.associations": {
+		".dockerignore": "ignore",
+		"Dockerfile*": "dockerfile"
+	}
 }
