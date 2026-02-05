@@ -125,6 +125,7 @@ export function PokemonPreview({ pokemonName }: PokemonPreviewProps) {
 							}}
 							unoptimized
 							onLoad={() => setIsImageLoaded(true)}
+							priority
 						/>
 					</Box>
 				</Box>

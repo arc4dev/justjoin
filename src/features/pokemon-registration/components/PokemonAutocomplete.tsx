@@ -31,6 +31,11 @@ export function PokemonAutocomplete({
 	const [localInput, setLocalInput] = useState('')
 	const { pokemons, isLoading, error: searchError } = usePokemonSearch(localInput)
 
+	const handleBlur = () => {
+		setLocalInput('')
+		onBlur()
+	}
+
 	// Derive display value: show localInput if user is typing, otherwise show form value
 	const displayValue = localInput || value
 
@@ -66,7 +71,7 @@ export function PokemonAutocomplete({
 			onChange={handleChange}
 			inputValue={displayValue}
 			onInputChange={handleInputChange}
-			onBlur={onBlur}
+			onBlur={handleBlur}
 			loading={isLoading}
 			clearIcon={null}
 			label='Pokemon name'

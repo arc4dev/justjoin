@@ -9,7 +9,7 @@ interface SearchResponse {
 /**
  * Fetches Pokemon search results from the API
  */
-async function fetchPokemonSearch(query: string): Promise<SearchResult[]> {
+async function fetchPokemonSearch(query: string, signal?: AbortSignal): Promise<SearchResult[]> {
 	if (!query || query.trim().length < 2) {
 		return []
 	}
@@ -17,7 +17,7 @@ async function fetchPokemonSearch(query: string): Promise<SearchResult[]> {
 	// Add 500ms fake delay to see the spinner
 	await new Promise((resolve) => setTimeout(resolve, 500))
 
-	const response = await fetch(`/api/search?name=${encodeURIComponent(query)}`)
+	const response = await fetch(`/api/search?name=${encodeURIComponent(query)}`, { signal })
 
 	if (!response.ok) {
 		if (response.status === 429) {
@@ -42,7 +42,7 @@ export function usePokemonSearch(query: string, debounceMs: number = 300) {
 
 	const { data, isLoading, error, isFetching } = useQuery({
 		queryKey: ['pokemon-search', debouncedQuery],
-		queryFn: () => fetchPokemonSearch(debouncedQuery),
+		queryFn: ({ signal }) => fetchPokemonSearch(debouncedQuery, signal),
 		enabled: debouncedQuery.trim().length >= 2,
 		staleTime: 5 * 60 * 1000 // 5 minutes
 	})

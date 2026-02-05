@@ -1,16 +1,16 @@
 'use client'
 
 import { useState } from 'react'
-import { useForm, Controller, SubmitHandler } from 'react-hook-form'
+import { useForm, Controller, SubmitHandler, useWatch } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Box, Paper, Alert, Typography } from '@mui/material'
 import { TextField } from '@/components/ui/TextField/TextField'
 import { Button } from '@/components/ui/Button/Button'
-import { trainerFormSchema, TrainerFormInput } from '../schemas/trainer.schema'
+import { trainerSchema, TrainerFormInput, TrainerFormData } from '../schemas/trainer.schema'
 import { PokemonAutocomplete } from './PokemonAutocomplete'
 import { PokemonPreview } from './PokemonPreview'
 import { SuccessModal } from './SuccessModal'
-import { registerTrainerAction } from '@/app/actions'
+import { registerTrainerAction } from '../actions/register-trainer.action'
 
 /**
  * Main trainer registration form component
@@ -27,10 +27,9 @@ export function TrainerForm() {
 		register,
 		handleSubmit,
 		formState: { errors },
-		watch,
 		reset
 	} = useForm<TrainerFormInput>({
-		resolver: zodResolver(trainerFormSchema),
+		resolver: zodResolver(trainerSchema),
 		mode: 'onBlur',
 		defaultValues: {
 			name: '',
@@ -39,18 +38,18 @@ export function TrainerForm() {
 		}
 	})
 
-	const selectedPokemon = watch('pokemonName')
+	const selectedPokemon = useWatch({
+		control,
+		name: 'pokemonName'
+	})
 
 	const onSubmit: SubmitHandler<TrainerFormInput> = async (formData) => {
 		setIsSubmitting(true)
 		setServerError(null)
 
 		try {
-			const data = {
-				...formData,
-				age: Number(formData.age)
-			}
-			const result = await registerTrainerAction(data)
+			// z.coerce automatically converts string to number during validation
+			const result = await registerTrainerAction(formData as TrainerFormData)
 
 			if (result.success) {
 				setSuccessMessage(result.message || 'Registration successful!')

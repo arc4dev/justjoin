@@ -7,7 +7,10 @@ import { PokemonDetail, PokemonPreview } from '../types/pokemon.types'
  */
 export async function fetchPokemonDetail(nameOrId: string | number): Promise<PokemonDetail> {
 	const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${nameOrId}`, {
-		cache: 'force-cache' // Cache Pokemon data
+		next: {
+			revalidate: 86400, // Once every 24 hours
+			tags: ['pokemon-detail'] // Invalidate all cached details when a new Pokemon is added (not really needed but good practice)
+		}
 	})
 
 	if (!response.ok) {

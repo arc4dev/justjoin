@@ -1,26 +1,14 @@
 import { z } from 'zod'
 
-/**
- * Form input schema - accepts age as string from input field
- */
-export const trainerFormSchema = z.object({
-	name: z
-		.string()
-		.min(2, 'Name must be at least 2 characters')
-		.max(20, 'Name must be at most 20 characters')
-		.trim(),
-	age: z
-		.string()
-		.min(1, 'Age is required')
-		.refine((val) => !isNaN(Number(val)), 'Age must be a number')
-		.refine((val) => Number.isInteger(Number(val)), 'Age must be a whole number')
-		.refine((val) => Number(val) >= 16, 'Trainer must be at least 16')
-		.refine((val) => Number(val) <= 99, 'Age must be below 100'),
-	pokemonName: z.string().min(1, 'Please select a Pokemon')
-})
+const ageSchema = z.coerce
+	.number()
+	.int('Age must be a whole number')
+	.min(16, 'Trainer must be at least 16')
+	.max(99, 'Age must be below 100')
 
 /**
- * Server validation schema - expects age as number
+ * Single source of truth for trainer validation
+ * Used for both client-side forms and server-side validation
  */
 export const trainerSchema = z.object({
 	name: z
@@ -28,13 +16,11 @@ export const trainerSchema = z.object({
 		.min(2, 'Name must be at least 2 characters')
 		.max(20, 'Name must be at most 20 characters')
 		.trim(),
-	age: z
-		.number()
-		.int('Age must be a whole number')
-		.min(16, 'Trainer must be at least 16')
-		.max(99, 'Age must be below 100'),
+	age: ageSchema,
 	pokemonName: z.string().min(1, 'Please select a Pokemon')
 })
 
-export type TrainerFormInput = z.infer<typeof trainerFormSchema>
-export type TrainerFormData = z.infer<typeof trainerSchema>
+// Type for form input (age as string from input field)
+export type TrainerFormInput = z.input<typeof trainerSchema>
+// Type for validated output (age as number)
+export type TrainerFormData = z.output<typeof trainerSchema>
